@@ -20,7 +20,7 @@ let usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users:[...action.users],
+                users: [...action.users],
                 filterUsers: [...action.users]
             };
         case SET_SEARCH_TEXT:
@@ -29,7 +29,7 @@ let usersReducer = (state = initialState, action) => {
                 searchText: action.searchText
             };
         case FILTER_USERS:
-            if(!state.searchText) {
+            if (!state.searchText) {
                 return {
                     ...state,
                     filterUsers: state.users
@@ -37,7 +37,7 @@ let usersReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                filterUsers: state.users.filter(u => u.id == state.searchText || u.firstName===state.searchText || u.lastName===state.searchText)
+                filterUsers: state.users.filter(u => u.id == state.searchText || u.firstName === state.searchText || u.lastName === state.searchText)
             };
         case IS_FETCHING:
             return {
@@ -71,7 +71,7 @@ export const filterUsers = (searchText) => {
 
 export const isFetching = (isFetching) => {
     return {
-        type:IS_FETCHING,
+        type: IS_FETCHING,
         isFetching
     }
 };
@@ -90,18 +90,15 @@ export const setSearchText = (searchText) => {
     }
 };
 
-export const getUsers = () =>{
- return (dispatch) => {
-     dispatch(isFetching(true));
-     userApi.getUsers().then((data) => {
-         dispatch(setUsers(data.data));
-         dispatch(isFetching(false));
-     });
- }
+export const getUsers = () => {
+    return (dispatch) => {
+        dispatch(isFetching(true));
+        userApi.getUsers().then((data) => {
+            dispatch(setUsers(data.data));
+            dispatch(isFetching(false));
+        });
+    }
 };
-
-
-
 
 
 export default usersReducer;

@@ -1,25 +1,23 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import {connect} from "react-redux";
 import {compose} from "redux";
 import DescriptionUser from "./DescriptionUser";
 import {setDescriptionId} from "../redux/userReducer";
 
-
-
-class DescriptionsUserContainer extends React.Component {
+class DescriptionsUserContainer extends PureComponent {
 
     render() {
         return (<>
-              <DescriptionUser usersPage={this.props.usersPage} setDescriptionId={this.props.setDescriptionId}/>
+                <DescriptionUser usersPage={this.props.usersPage} setDescriptionId={this.props.setDescriptionId}/>
             </>
         )
     }
 }
 
-    const mapStateToProps = (state) => {
-        return {
-            usersPage: state.usersPage
-        }
-    };
+const mapStateToProps = (state) => {
+    return {
+        usersPage: state.usersPage
+    }
+};
 
-export default compose(connect(mapStateToProps,{setDescriptionId}))(DescriptionsUserContainer);
+export default compose(connect(mapStateToProps, {setDescriptionId}))(DescriptionsUserContainer);

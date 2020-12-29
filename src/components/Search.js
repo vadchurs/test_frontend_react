@@ -1,7 +1,5 @@
 import './../App.css';
 
-
-
 let Search = (props) => {
     let onChangeSearchText = (e) => {
         props.setSearchText(e.target.value)
